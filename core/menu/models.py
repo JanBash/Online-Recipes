@@ -16,7 +16,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length = 100)
     description = models.TextField()
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
+    ingredient = models.ForeignKey('IngredientsForRecipe', on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete = models.PROTECT)
     cooking_time = models.DurationField()
     category = models.ForeignKey(Category, on_delete = models.PROTECT)
