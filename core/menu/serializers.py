@@ -72,6 +72,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'password')
     
     def create(self, validated_data):
+        
         user = User(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
@@ -79,6 +80,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return user
     
     def update(self, instance, validated_data):
+        
         for field, value in validated_data.items():
             if field == 'password':
                 instance.set_password(value)
